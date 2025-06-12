@@ -1,6 +1,7 @@
 Alpine Box
 =================
 Alpine Box is a lightweight, secure, and efficient container image based on Alpine Linux. It is designed to provide a minimal environment for running applications with a focus on security and performance.
+
 Features
 -----------------
 - **Lightweight**: Minimal base image size for faster deployments.
@@ -14,7 +15,7 @@ Usage
 Docker
 
 ```bash
-docker run -it --rm alpine-box:latest
+docker run --name alpine-box -it --rm ghcr.io/vekjja/alpine-box:main
 ```
 
 Kubernetes
