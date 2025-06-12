@@ -103,5 +103,8 @@ if [ $commands[autojump] ]; then                               # check if autoju
     fi
 fi
 
-# Lastly, Load Oh My Zsh
+# Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
+
+#### Oh My Posh ####
+eval "$(oh-my-posh init zsh --config /etc/ohmyposh-themes/kev.omp.json)"
