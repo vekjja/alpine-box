@@ -1,5 +1,8 @@
-FROM alpine
+FROM alpine:latest
+
 RUN apk add --no-cache \
     curl \
     jq \
     netcat-openbsd
+
+ENTRYPOINT ["/bin/sh"]
