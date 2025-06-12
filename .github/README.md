@@ -20,5 +20,5 @@ docker run -it --rm alpine-box:latest
 Kubernetes
 
 ```bash
-kubectl run alpine-box --image=alpine-box:latest --restart=Never -it --rm -- sh
+kubectl run alpine-box --image=ghcr.io/vekjja/alpine-box:main --restart=Never --image-pull-policy=Always -it --rm
 ```
