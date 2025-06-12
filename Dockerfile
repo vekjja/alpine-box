@@ -9,25 +9,26 @@ RUN apk add --no-cache \
     netcat-openbsd \
     shadow \
     unzip \
-    bash &&
+    bash
 
-    # Install Oh My Zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended &&
+# Install Oh My Zsh (in unattended mode)
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-    # Install Oh My Posh using bash
-    curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin &&
+# Install Oh My Posh using bash
+RUN curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
-    # Remove bash to reduce image size
-    apk del bash
+# Remove bash to shrink image
+RUN apk del bash
 
-# Create theme directory and copy your custom theme
+# Create theme directory and copy custom theme
 RUN mkdir -p /etc/ohmyposh-themes
 COPY kev.omp.json /etc/ohmyposh-themes/kev.omp.json
 
-# Copy your .zshrc
+# Copy custom .zshrc
 COPY .zshrc /root/.zshrc
 
-# Set zsh as the default shell
+# Set zsh as the default shell for root
 RUN sed -i 's|/bin/sh|/bin/zsh|' /etc/passwd
 
+# Default to Zsh shell
 ENTRYPOINT ["/bin/zsh"]
