@@ -4,5 +4,3 @@ RUN apk add --no-cache \
     curl \
     jq \
     netcat-openbsd
-
-ENTRYPOINT ["/bin/sh"]
