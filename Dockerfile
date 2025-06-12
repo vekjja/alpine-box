@@ -18,7 +18,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 RUN curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
 # Remove bash to shrink image
-RUN apk del bash
+# RUN apk del bash
 
 # Create theme directory and copy custom theme
 RUN mkdir -p /etc/ohmyposh-themes
