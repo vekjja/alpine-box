@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-# Install dependencies
+# Install essential packages, including bash temporarily
 RUN apk add --no-cache \
     zsh \
     git \
@@ -8,22 +8,26 @@ RUN apk add --no-cache \
     jq \
     netcat-openbsd \
     shadow \
-    unzip
+    unzip \
+    bash &&
 
-# Install Oh My Zsh
-RUN ZSH="/root/.oh-my-zsh" && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    # Install Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended &&
 
-# Install Oh My Posh
-RUN curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+    # Install Oh My Posh using bash
+    curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin &&
 
-# Copy custom OMP theme to a shared path
+    # Remove bash to reduce image size
+    apk del bash
+
+# Create theme directory and copy your custom theme
+RUN mkdir -p /etc/ohmyposh-themes
 COPY kev.omp.json /etc/ohmyposh-themes/kev.omp.json
 
-# Copy custom .zshrc
+# Copy your .zshrc
 COPY .zshrc /root/.zshrc
 
 # Set zsh as the default shell
 RUN sed -i 's|/bin/sh|/bin/zsh|' /etc/passwd
 
-# Entry into Zsh
 ENTRYPOINT ["/bin/zsh"]
