@@ -64,7 +64,7 @@
             "newline": true,
             "segments": [
                 {
-                    "background": "#16b9ff",
+                    "background": "#FF0088",
                     "foreground": "#000000",
                     "properties": {
                         "style": "agnoster_full",
@@ -123,13 +123,13 @@
             "newline": true,
             "segments": [
                 {
-                    "foreground": "#00b3ff",
+                    "foreground": "#FF0088",
                     "template": "╰ ",
                     "style": "plain",
                     "type": "text"
                 },
                 {
-                    "foreground": "#00b3ff",
+                    "foreground": "#FF0088",
                     "foreground_templates": [
                         "{{ if .SSHSession }}#ff6ad5{{ end }}"
                     ],
@@ -138,7 +138,7 @@
                     "type": "session"
                 },
                 {
-                    "foreground": "#00b3ff",
+                    "foreground": "#FF0088",
                     "template": "{{.UserName}}",
                     "style": "plain",
                     "type": "session"
@@ -153,7 +153,7 @@
                     "type": "os"
                 },
                 {
-                    "foreground": "#00b3ff",
+                    "foreground": "#FF0088",
                     "template": "{{ .HostName }}:",
                     "style": "plain",
                     "type": "session"
