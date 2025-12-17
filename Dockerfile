@@ -8,6 +8,7 @@ RUN apk add --no-cache \
     vim \
     jq \
     netcat-openbsd \
+    speedtest-cli \
     shadow \
     unzip \
     bash
