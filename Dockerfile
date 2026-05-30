@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     speedtest-cli \
     shadow \
     unzip \
+    postgresql-client \
     bash
 
 # Install Oh My Zsh (in unattended mode)
