@@ -8,10 +8,10 @@ RUN apk add --no-cache \
     vim \
     jq \
     netcat-openbsd \
+    postgresql-client \
     speedtest-cli \
     shadow \
     unzip \
-    postgresql-client \
     bash
 
 # Install Oh My Zsh (in unattended mode)
