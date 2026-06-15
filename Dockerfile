@@ -27,7 +27,9 @@ COPY kev.omp.json /etc/ohmyposh-themes/kev.omp.json
 # Copy custom .zshrc
 COPY .zshrc /root/.zshrc
 COPY .vimrc /root/.vimrc
-COPY index.html /root/index.html
+
+RUN mkdir -p /var/opt/html
+COPY index.html /var/opt/html/index.html
 
 # Set zsh as the default shell for root
 RUN sed -i 's|/bin/sh|/bin/zsh|' /etc/passwd

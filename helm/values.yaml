@@ -6,10 +6,10 @@ replicaCount: 1
 
 image:
   repository: ghcr.io/vekjja/alpine-box
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "dev"
   command: [ "/bin/sh", "-c" ]
-  args: [ "python -m http.server 8080" ]
+  args: [ "python -m http.server 8080 -d /var/opt/html" ]
 
 imagePullSecrets:
 - name: ghcr-secret
