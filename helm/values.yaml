@@ -8,6 +8,7 @@ image:
   repository: ghcr.io/vekjja/alpine-box
   pullPolicy: Always
   tag: "dev"
+
   command: [ "/bin/sh", "-c" ]
   args: [ "python -m http.server 8080 -d /var/opt/html" ]
 
@@ -61,23 +62,25 @@ ingress:
 # (see: https://gateway-api.sigs.k8s.io/guides/)
 httpRoute:
   # HTTPRoute enabled.
-  enabled: false
+  enabled: true
   # HTTPRoute annotations.
-  annotations: {}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: alpine.livingroom.cloud
+    external-dns.alpha.kubernetes.io/target: "174.44.105.210"
+    cert-manager.io/cluster-issuer: "cloudflare-letsencrypt-production"
   # Which Gateways this Route is attached to.
   parentRefs:
-  - name: gateway
-    sectionName: http
-    # namespace: default
-    # Hostnames matching HTTP header.
+  - name: http-gateway
+    namespace: kgateway-system
   hostnames:
-  - chart-example.local
+  - "alpine.livingroom.cloud"
+  - "localhost"
   # List of rules and filters applied.
   rules:
   - matches:
     - path:
         type: PathPrefix
-        value: /headers
+        value: /
   #   filters:
   #   - type: RequestHeaderModifier
   #     requestHeaderModifier:
