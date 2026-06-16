@@ -61,9 +61,7 @@ ingress:
 # Requires Gateway API resources and suitable controller installed within the cluster
 # (see: https://gateway-api.sigs.k8s.io/guides/)
 httpRoute:
-  # HTTPRoute enabled.
-  enabled: true
-  # HTTPRoute annotations.
+  enabled: false
   annotations: {}
   parentRefs:
   - name: http-gateway
