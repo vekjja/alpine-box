@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     postgresql-client \
     speedtest-cli \
     shadow \
+    stress-ng \
     unzip \
     bash
 
