@@ -61,13 +61,13 @@ ingress:
 # Requires Gateway API resources and suitable controller installed within the cluster
 # (see: https://gateway-api.sigs.k8s.io/guides/)
 httpRoute:
-  enabled: false
+  enabled: true
   annotations: {}
   parentRefs:
   - name: http-gateway
     namespace: kgateway-system
   hostnames:
-  - "box.livingroom.cloud"
+  - "box.authriz.io"
   # List of rules and filters applied.
   rules:
   - matches:
